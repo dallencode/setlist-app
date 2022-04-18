@@ -16,8 +16,8 @@ class Song
     end
 end
 
-list = Song.new
-list.add("hello", "adele")
+# list = Song.new
+# list.add("hello", "adele")
 # list.remove("hello")
-list.add("123", '12')
-p list.push_to_setlist
+# list.add("123", '12')
+# p list.push_to_setlist
