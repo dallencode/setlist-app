@@ -15,4 +15,5 @@ describe Song do
         song = Song.new
         expect(song.remove(name)).to eq([])
     end
+
 end
