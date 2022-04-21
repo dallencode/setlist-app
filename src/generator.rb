@@ -49,8 +49,7 @@ loop do
         final_list.view(song.push_to_setlist)
 
     elsif choice == "Fill"
-        # user_setlist = Song.new
-        # user_setlist_filled = user_setlist.fill(song.push_to_setlist)
+        system("clear") || system("cls")
         user_setlist_filled = song.fill(song.push_to_setlist)
         final_list = Setlist.new
         final_list.view(user_setlist_filled)
@@ -60,3 +59,24 @@ loop do
     end
 end
 
+puts ""
+puts "Congratulations, you've made a set list!"
+puts ""
+prompt2 = TTY::Prompt.new
+
+loop do
+    choice2 = prompt2.select("What would you like to do next?", %w(Export_to_JSON Exit))
+
+    if choice2 == "Export_to_JSON"
+        # export = User.new.write_to_json(song::arr)
+        File.open("#{user::name.downcase}.json", "w") do |f|
+            f.write(JSON.pretty_generate(song::arr))
+        end
+    elsif choice2 == "View_Current"
+    elsif choice2 == "Exit"
+        puts "See you next time!"
+        exit
+    else 
+        break 
+    end
+end

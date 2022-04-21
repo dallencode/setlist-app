@@ -27,7 +27,6 @@ class Song
                 fill_arr << item
                 @arr += fill_arr
             end
-            # fill_arr.uniq!
             @arr.uniq!
         end
         @arr
