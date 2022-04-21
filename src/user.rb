@@ -3,11 +3,13 @@ require_relative 'setlist'
 
 class User
     attr_reader :name
+    attr_reader :filename
 
     def check_user_exists
-        puts "What is your name?"
+        print "Enter your name: "
         @name = gets.chomp.capitalize
         puts File.file?("#{@name.downcase}.json") ? "Welcome back, #{@name}!" : "Welcome #{@name}!"
+        filename = File.new("#{@name.downcase}.json","w") if !File.file?("#{@name.downcase}.json")
     end
 end
 

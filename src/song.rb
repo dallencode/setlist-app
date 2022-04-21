@@ -23,12 +23,14 @@ class Song
         data_hash = JSON.parse(file, :symbolize_names => true)
 
         data_hash.shuffle.each do |item| 
-            while fill_arr.size < NumberOfSongs do
+            while @arr.size < NumberOfSongs do
                 fill_arr << item
+                @arr += fill_arr
             end
-            fill_arr.uniq!
+            # fill_arr.uniq!
+            @arr.uniq!
         end
-        fill_arr
+        @arr
     end
 
     def push_to_setlist

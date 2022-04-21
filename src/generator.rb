@@ -54,6 +54,7 @@ loop do
         user_setlist_filled = song.fill(song.push_to_setlist)
         final_list = Setlist.new
         final_list.view(user_setlist_filled)
+        break
     else
         break
     end
