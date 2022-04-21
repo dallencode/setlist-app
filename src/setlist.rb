@@ -1,3 +1,6 @@
+require 'json'
+# require_relative 'generator'
+
 class String  
   def titleize
     self.split(/ |\_/).map(&:capitalize).join(" ")
@@ -5,6 +8,12 @@ class String
 end
 
 class Setlist
+
+    attr_accessor :master_list
+
+    def initialize
+        @master_list = []
+    end
 
     def view(array)
         array.each_with_index do |item, index| 
@@ -20,12 +29,10 @@ class Setlist
         pdf.new_page.textbox "Test pdf content", font_size: 18, opacity: 0.75
         pdf.save 'test.pdf'
         # Choose file save location?
-        # Potentially a useless feature
         
     end
 end
 
-export = Setlist.new
-export.export_pdf
 
-# method for final set list. Use .shuffle to randomize order.
+# export = Setlist.new
+# export.export_pdf

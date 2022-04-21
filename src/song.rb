@@ -14,8 +14,25 @@ class Song
         @arr.delete_if {|h| h[:name] == name.titleize}
     end
 
+    def fill(array)
+        fill_arr = []
+        array.each do | song |
+            fill_arr << song
+        end
+        file = File.read('starter_list.json')
+        data_hash = JSON.parse(file, :symbolize_names => true)
+
+        data_hash.shuffle.each do |item| 
+            while fill_arr.size < NumberOfSongs do
+                fill_arr << item
+            end
+            fill_arr.uniq!
+        end
+        fill_arr
+    end
+
     def push_to_setlist
-       @arr
+        @arr
     end
 end
 
