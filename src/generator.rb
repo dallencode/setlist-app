@@ -8,17 +8,15 @@ require "tty-prompt"
 
 puts LOGO.green
 
-puts "Welcome to SetList"
-puts "An app for musicians to keep things fresh!"
+puts "Welcome to SetList".colorize(:light_blue ).colorize( :background => :black)
+puts "An app for musicians to keep things fresh!".colorize(:light_blue ).colorize( :background => :black)
 puts ""
 
 user = User.new
 user.check_user_exists
 
 set_length = TTY::Prompt.new
-NumberOfSongs = set_length.ask("Enter total number of songs for your set list:", default: 10, convert: :int) do |q|
-  q.convert(:integer, "Please Enter Digits Only")
-end
+NumberOfSongs = set_length.slider("Enter total number of songs for your set list:", min: 1, max: 20, step: 1, default: 10)
 
 prompt = TTY::Prompt.new
 song = Song.new
@@ -27,17 +25,20 @@ loop do
     choice = prompt.select("What would you like to do?", %w(Add Remove View_Current Fill))
     
     if choice == "Add"  
-      puts "Continue adding songs. Hit enter when finished."
-
-        loop do
+        system("clear") || system("cls")
+      puts "Continue adding songs. Hit enter when finished.".colorize(:cyan)
+        total = 0
+        while total < NumberOfSongs do
             print "Title: "
             break if (title = gets.chomp.titleize) == ""
             print "Artist: "
             artist = gets.chomp.titleize
             song.add(title, artist)
+            total += 1
         end
 
     elsif choice == "Remove"
+        system("clear") || system("cls")
         print "Song to remove: "
         title = gets.chomp
         song.remove(title)
