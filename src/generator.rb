@@ -69,11 +69,9 @@ loop do
     choice2 = prompt2.select("What would you like to do next?", %w(Export_to_JSON Exit))
 
     if choice2 == "Export_to_JSON"
-        # export = User.new.write_to_json(song::arr)
         File.open("#{user::name.downcase}.json", "w") do |f|
             f.write(JSON.pretty_generate(song::arr))
         end
-    elsif choice2 == "View_Current"
     elsif choice2 == "Exit"
         puts "See you next time!"
         exit

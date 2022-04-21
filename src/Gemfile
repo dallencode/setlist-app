@@ -7,3 +7,4 @@ gem "combine_pdf"
 gem "colorize"
 gem "tty-prompt"
 gem 'json'
+gem "tty-file"

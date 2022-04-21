@@ -1,11 +1,9 @@
 require_relative '../song'
 
 describe Song do
-    it 'should add new song to array' do
-        name = "Hello"
-        artist = "Adele"
+    it 'should create a new instance of Song' do
         song = Song.new
-        expect(song.add(name, artist)).to eq([{name: "Hello", artist: "Adele"}])
+        expect(song).to be_kind_of(Song)
     end
 
     it 'should remove song from array' do
@@ -16,4 +14,8 @@ describe Song do
         expect(song.remove(name)).to eq([])
     end
 
+    it 'should return an array' do
+        song = Song.new
+        expect(song.push_to_setlist).to be_a(Array)
+    end
 end
