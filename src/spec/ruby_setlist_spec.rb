@@ -1,5 +1,6 @@
-require_relative '../setlist'
+# frozen_string_literal: true
 
+require_relative '../setlist'
 
 # Tests the creation of setlist object and viewing option
 describe Setlist do

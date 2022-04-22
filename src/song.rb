@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Song
   attr_reader :arr
 
@@ -23,7 +25,7 @@ class Song
     data_hash = JSON.parse(file, symbolize_names: true)
 
     data_hash.shuffle.each do |item|
-      while @arr.size < NumberOfSongs
+      while @arr.size < NUMBER_OF_SONGS
         fill_arr << item
         @arr += fill_arr
       end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 require 'combine_pdf'
 require 'colorize'
