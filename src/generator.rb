@@ -17,13 +17,20 @@ user = User.new
 user.check_user_exists
 
 # Ask how many songs to be in the set list
-set_length = TTY::Prompt.new
-NumberOfSongs = set_length.slider('Enter total number of songs for your set list:', min: 1, max: 20, step: 1,
-                                                                                    default: 10)
+unless ARGV[1].nil?
+  begin
+    NumberOfSongs = Integer(ARGV[1])
+  rescue ArgumentError
+    set_length = TTY::Prompt.new
+    NumberOfSongs = set_length.slider('Enter total number of songs for your set list:', min: 1, max: 20, step: 1, default: 10)
+  end
+else
+  set_length = TTY::Prompt.new
+  NumberOfSongs = set_length.slider('Enter total number of songs for your set list:', min: 1, max: 20, step: 1, default: 10)
+end
 
 prompt = TTY::Prompt.new
 song = Song.new
-
 
 loop do
   choice = prompt.select('What would you like to do?', %w[Add Remove View_Current Fill])
@@ -86,6 +93,7 @@ loop do
     final_list = Setlist.new
     final_list.view(song.push_to_setlist)
   elsif choice2 == 'Exit'
+    system('clear') || system('cls')
     puts 'See you next time!'.light_blue
     exit
   else
