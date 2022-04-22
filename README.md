@@ -82,12 +82,12 @@ Each feature was built by first writing a simple test and then writing code that
 ### Project Management
 
 Trello was used to manage the flow of this project.
-
 <details>
     <summary>View screenshots</summary>
-![Trello-1](./docs/Trello-1.png)  
-![Trello-2](./docs/Trello-2.png)  
-![Trello-3](./docs/Trello-3.png)  
+
+![Trello-1](./docs/Trello-1.png "trello-1")
+![Trello-2](./docs/Trello-2.png "trello-2")
+![Trello-3](./docs/Trello-3.png "trello-3")
 </details>
 
 View the trello board [HERE](https://trello.com/b/lqRJUsOw/terminal-app) (note: you will need a free Trello account)
