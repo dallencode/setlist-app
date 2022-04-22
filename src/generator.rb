@@ -6,8 +6,7 @@ require 'bundler/setup'
 require 'colorize'
 require "tty-prompt"
 
-puts LOGO.green
-
+puts LOGO.colorize(:green ).colorize( :background => :black)
 puts "Welcome to SetList".colorize(:light_blue ).colorize( :background => :black)
 puts "An app for musicians to keep things fresh!".colorize(:light_blue ).colorize( :background => :black)
 puts ""
@@ -45,7 +44,7 @@ loop do
 
     elsif choice == "View_Current"
         system("clear") || system("cls")
-        puts "Your current set list (#{song::arr.size} items):"
+        # puts "Your current set list (#{song::arr.size} items):"
         final_list = Setlist.new
         final_list.view(song.push_to_setlist)
 
@@ -61,19 +60,25 @@ loop do
 end
 
 puts ""
-puts "Congratulations, you've made a set list!"
+puts "Congratulations, you've made a set list!".magenta
 puts ""
 prompt2 = TTY::Prompt.new
 
 loop do
-    choice2 = prompt2.select("What would you like to do next?", %w(Export_to_JSON Exit))
+    puts ""
+    choice2 = prompt2.select("What would you like to do next?", %w(Export_to_JSON View_Playlist Exit))
 
     if choice2 == "Export_to_JSON"
         File.open("#{user::name.downcase}.json", "w") do |f|
             f.write(JSON.pretty_generate(song::arr))
         end
+        puts "Successfully Saved to JSON file.".green
+    elsif choice2 == "View_Playlist"
+        system("clear") || system("cls")
+        final_list = Setlist.new
+        final_list.view(song.push_to_setlist)
     elsif choice2 == "Exit"
-        puts "See you next time!"
+        puts "See you next time!".light_blue
         exit
     else 
         break 
