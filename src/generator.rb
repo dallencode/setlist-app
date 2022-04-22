@@ -1,6 +1,6 @@
-require_relative 'setlist'
-require_relative 'song'
 require_relative 'user'
+require_relative 'song'
+require_relative 'setlist'
 require 'rubygems'
 require 'bundler/setup'
 require 'colorize'
@@ -34,10 +34,10 @@ loop do
     total = 0
     while total < NumberOfSongs
       print 'Title: '
-      break if (title = gets.chomp.titleize) == ''
+      break if (title = STDIN.gets.chomp.titleize) == ''
 
       print 'Artist: '
-      artist = gets.chomp.titleize
+      artist = STDIN.gets.chomp.titleize
       song.add(title, artist)
       total += 1
     end
@@ -46,7 +46,7 @@ loop do
   elsif choice == 'Remove'
     system('clear') || system('cls')
     print 'Song to remove: '
-    title = gets.chomp
+    title = STDIN.gets.chomp
     song.remove(title)
 
     # Shows the current list

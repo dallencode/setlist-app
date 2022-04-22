@@ -8,7 +8,6 @@ class Song
   def add(name, artist)
     @arr << { name: name, artist: artist }
     puts "#{@arr[-1][:name]} by #{@arr[-1][:artist]} added to your set list."
-    nil
   end
 
   def remove(name)
