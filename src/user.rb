@@ -9,7 +9,7 @@ class User
 
   def check_user_exists
     unless ARGV.empty?
-    @name = ARGV[0].to_s
+    @name = ARGV[0].capitalize
     else
       print 'Enter your name: '
       @name = gets.chomp.capitalize

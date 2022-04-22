@@ -1,6 +1,7 @@
 require_relative 'user'
 require_relative 'song'
 require_relative 'setlist'
+require_relative 'art'
 require 'rubygems'
 require 'bundler/setup'
 require 'colorize'
@@ -8,6 +9,7 @@ require 'tty-prompt'
 
 # Print logo and welcome user
 puts LOGO.colorize(:green).colorize(background: :black)
+puts ""
 puts 'Welcome to SetList'.colorize(:light_blue).colorize(background: :black)
 puts 'An app for musicians to keep things fresh!'.colorize(:light_blue).colorize(background: :black)
 puts ''
@@ -15,11 +17,12 @@ puts ''
 # Check if the user has an existing profile (JSON file)
 user = User.new
 user.check_user_exists
-
+puts ""
 # Ask how many songs to be in the set list
 unless ARGV[1].nil?
   begin
     NumberOfSongs = Integer(ARGV[1])
+    NumberOfSongs = 20 if NumberOfSongs > 20
   rescue ArgumentError
     set_length = TTY::Prompt.new
     NumberOfSongs = set_length.slider('Enter total number of songs for your set list:', min: 1, max: 20, step: 1, default: 10)
@@ -75,7 +78,7 @@ loop do
 end
 
 puts ''
-puts "Congratulations, you've made a set list!".magenta
+puts "Congratulations, you've made a set list!".green
 puts ''
 prompt2 = TTY::Prompt.new
 
@@ -95,6 +98,7 @@ loop do
   elsif choice2 == 'Exit'
     system('clear') || system('cls')
     puts 'See you next time!'.light_blue
+    puts EXITLOGO.green
     exit
   else
     break
