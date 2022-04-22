@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "rspec", "~> 3.11"
-gem "combine_pdf"
-gem "colorize"
-gem "tty-prompt"
+gem 'colorize'
+gem 'combine_pdf'
 gem 'json'
-gem "tty-file"
+gem 'rspec', '~> 3.11'
+gem 'tty-file'
+gem 'tty-prompt'
