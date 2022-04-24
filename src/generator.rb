@@ -54,7 +54,10 @@ loop do
     total = 0
     while total < NUMBER_OF_SONGS
       print 'Title: '
-      break if (title = $stdin.gets.chomp.titleize) == ''
+      if (title = $stdin.gets.chomp.titleize) == ''
+         system('clear') || system('cls')
+         break
+      end
 
       print 'Artist: '
       artist = $stdin.gets.chomp.titleize
